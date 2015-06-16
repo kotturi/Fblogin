@@ -3,7 +3,7 @@
 <suite name="Suite" parallel="none">
   <test name="Test">
     <classes>
-      <class name="Demos.emailjen"/>
+      <class name="bin.Demos.emailjen"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
