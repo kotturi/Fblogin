@@ -13,6 +13,8 @@
         <pathelement location="bin"/>
         <pathelement location="../../selenium-server-standalone-2.45.0.jar"/>
     </path>
+    
+    <target name="all" depends="clean,compile,dist" description="Clean work dirs, then compile and create a WAR"/>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
