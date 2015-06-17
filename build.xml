@@ -5,10 +5,7 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="Jenkin">
     <property environment="env"/>
-    <property name="app.name" value="helloWorld"/>
-    <property name="app.version" value="0.1-dev"/>
-    
-    <property name="tcserver.home" value="/opt/apps/tomcat7"/><property name="work.home" value="${basedir}/work"/><property name="dist.home" value="${basedir}/dist"/><property name="src.home" value="${basedir}/src"/><property name="web.home" value="${basedir}/web"/>
+        
     <property name="ECLIPSE_HOME" value="../../Downloads/eclipse/"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.7"/>
@@ -18,7 +15,6 @@
         <pathelement location="../../selenium-server-standalone-2.45.0.jar"/>
     </path>
     
-    <target name="all" depends="clean,compile,dist" description="Clean work dirs, then compile and create a WAR"/>
     <target name="init">
         <mkdir dir="bin"/>
         <copy includeemptydirs="false" todir="bin">
@@ -76,5 +72,20 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
-    </target>
+            </target>
+            
+    <target name="war" description="Bundles the application as a WAR file" depends="clean, build">
+    <mkdir dir="WebContent/WEB-INF/classes"/>
+     
+    <copy includeemptydirs="false" todir="WebContent/WEB-INF/classes">
+            <fileset dir="build/classes">
+            <include name="**/*.class"/>
+            </fileset>
+    </copy>
+     
+    <war destfile="UploadServlet30.war"
+        basedir="WebContent"
+        needxmlfile="false">
+    </war>
+</target>
 </project>
