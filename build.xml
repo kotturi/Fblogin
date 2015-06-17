@@ -30,7 +30,7 @@
     <target depends="clean" name="cleanall"/>
     
     <target name="prepare" depends="clean" description="Create working dirs and copy static files to work dir"><mkdir dir="${dist.home}"/><mkdir dir="${work.home}/WEB-INF/classes"/><!-- Copy static HTML and JSP files to work dir -->
-<copy todir="${work.home}"><fileset dir="${src.Demos"/></copy></target>
+<copy todir="${work.home}"><fileset dir="${src.Demos}"/></copy></target>
 
     <target name="compile" depends="prepare" description="Compile Java sources and copy to WEB-INF/classes dir">
         <javac srcdir="${src.home}" destdir="${work.home}/WEB-INF/classes">
